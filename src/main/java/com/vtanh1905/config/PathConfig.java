@@ -3,6 +3,9 @@ package com.vtanh1905.config;
 public class PathConfig {
 	// Login Page
 	public static final String LOGIN = "/login";
+	
+	//Error Page
+	public static final String ERROR = "/error";
 
 	// Dashboard Page
 	public static final String DASHBOARD = "/dashboard";

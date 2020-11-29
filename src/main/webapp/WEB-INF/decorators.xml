@@ -3,6 +3,7 @@
 
 	<excludes>
 		<pattern>/login</pattern>
+		<pattern>/error</pattern>
 	</excludes>
 
 	<decorator name="theme" page="theme.jsp">
