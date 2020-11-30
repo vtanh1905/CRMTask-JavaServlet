@@ -8,6 +8,15 @@ public class User {
 	private String avatar;
 	private int role_id;
 	
+	public User(String email, String password, String fullname, String avatar, int role_id) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.fullname = fullname;
+		this.avatar = avatar;
+		this.role_id = role_id;
+	}
+	
 	public User(int id, String email, String password, String fullname, String avatar, int role_id) {
 		super();
 		this.id = id;
@@ -65,6 +74,8 @@ public class User {
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
+
+
 	
 	
 }

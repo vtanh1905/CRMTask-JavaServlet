@@ -22,7 +22,7 @@
 		<div class="container-fluid">
 			<div class="row bg-title">
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-					<h4 class="page-title">Thêm mới thành viên</h4>
+					<h4 class="page-title">Sửa thành viên</h4>
 				</div>
 			</div>
 			<!-- /.row -->
@@ -31,7 +31,7 @@
 				<div class="col-md-2 col-12"></div>
 				<div class="col-md-8 col-xs-12">
 					<div class="white-box">
-						<form class="form-horizontal form-material" action="<%= CONTEXT_PATH +  PathConfig.USER_ADD %>" method="POST">
+						<form class="form-horizontal form-material" action="<%= CONTEXT_PATH +  PathConfig.USER_EDIT %>" method="POST">
 							<% if(messageError != null) { %>
 								<div class="alert alert-danger" role="alert">${ messageError }</div>
 							<% } %>
@@ -74,9 +74,11 @@
 									</select>
 								</div>
 							</div>
+							<input type="hidden" name="id" value="${ user.id }">
+							<input type="hidden" name="oldPassword" value="${ user.password }">
 							<div class="form-group">
 								<div class="col-sm-12">
-									<button type="submit" class="btn btn-success">Add User</button>
+									<button type="submit" class="btn btn-success">Edit User</button>
 									<a href="<%= CONTEXT_PATH +  PathConfig.USER %>" class="btn btn-primary">Quay lại</a>
 								</div>
 							</div>
