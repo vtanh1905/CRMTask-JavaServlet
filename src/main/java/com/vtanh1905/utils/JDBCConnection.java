@@ -11,7 +11,7 @@ public class JDBCConnection {
 		final String PASSWORD = "123456";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			return DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
