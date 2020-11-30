@@ -22,5 +22,10 @@ public class PathConfig {
 	public static final String ROLE_EDIT = "/role/edit";
 	public static final String ROLE_REMOVE = "/role/remove";
 
+	// Job Page
+	public static final String JOB = "/job";
+	public static final String JOB_ADD = "/job/add";
+	public static final String JOB_EDIT = "/job/edit";
+	public static final String JOB_REMOVE = "/job/remove";
 	
 }

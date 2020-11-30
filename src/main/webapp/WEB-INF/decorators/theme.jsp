@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/commons/constants.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -55,11 +55,13 @@
 					data-target=".navbar-collapse"> <i class="fa fa-bars"></i>
 				</a>
 				<div class="top-left-part">
-					<a class="logo" href="<%= CONTEXT_PATH + PathConfig.DASHBOARD %>"> <b> <img
-					
-							src="<c:url value="/assets/plugins/images/pixeladmin-logo.png" />" alt="home" />
+					<a class="logo" href="<%=CONTEXT_PATH + PathConfig.DASHBOARD%>">
+						<b> <img
+							src="<c:url value="/assets/plugins/images/pixeladmin-logo.png" />"
+							alt="home" />
 					</b> <span class="hidden-xs"> <img
-							src="<c:url value="/assets/plugins/images/pixeladmin-text.png" />" alt="home" />
+							src="<c:url value="/assets/plugins/images/pixeladmin-text.png" />"
+							alt="home" />
 					</span>
 					</a>
 				</div>
@@ -76,7 +78,8 @@
 					<li>
 						<div class="dropdown">
 							<a class="profile-pic dropdown-toggle" data-toggle="dropdown"
-								href="#"> <img src="<c:url value="/assets/plugins/images/users/varun.jpg" />"
+								href="#"> <img
+								src="<c:url value="/assets/plugins/images/users/varun.jpg" />"
 								alt="user-img" width="36" class="img-circle" /> <b
 								class="hidden-xs">Cybersoft</b>
 							</a>
@@ -98,21 +101,22 @@
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-collapse slimscrollsidebar">
 				<ul class="nav" id="side-menu">
-					<li style="padding: 10px 0 0;"><a href="<%= CONTEXT_PATH + PathConfig.DASHBOARD %>"
+					<li style="padding: 10px 0 0;"><a
+						href="<%=CONTEXT_PATH + PathConfig.DASHBOARD%>"
 						class="waves-effect"><i class="fa fa-clock-o fa-fw"
 							aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
-					<li><a href="<%= CONTEXT_PATH + PathConfig.USER %>" class="waves-effect"><i
-							class="fa fa-user fa-fw" aria-hidden="true"></i><span
-							class="hide-menu">Thành viên</span></a></li>
-					<li><a href="<%= CONTEXT_PATH + PathConfig.ROLE %>" class="waves-effect"><i
-							class="fa fa-modx fa-fw" aria-hidden="true"></i><span
-							class="hide-menu">Quyền</span></a></li>
-					<li><a href="<%= CONTEXT_PATH + PathConfig.ROLE %>" class="waves-effect"><i
-							class="fa fa-table fa-fw" aria-hidden="true"></i><span
-							class="hide-menu">Dự án</span></a></li>
-					<li><a href="<%= CONTEXT_PATH + PathConfig.ROLE %>" class="waves-effect"><i
-							class="fa fa-table fa-fw" aria-hidden="true"></i><span
-							class="hide-menu">Công việc</span></a></li>
+					<li><a href="<%=CONTEXT_PATH + PathConfig.USER%>"
+						class="waves-effect"><i class="fa fa-user fa-fw"
+							aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a></li>
+					<li><a href="<%=CONTEXT_PATH + PathConfig.ROLE%>"
+						class="waves-effect"><i class="fa fa-modx fa-fw"
+							aria-hidden="true"></i><span class="hide-menu">Quyền</span></a></li>
+					<li><a href="<%=CONTEXT_PATH + PathConfig.JOB%>"
+						class="waves-effect"><i class="fa fa-table fa-fw"
+							aria-hidden="true"></i><span class="hide-menu">Dự án</span></a></li>
+					<li><a href="<%=CONTEXT_PATH + PathConfig.ROLE%>"
+						class="waves-effect"><i class="fa fa-table fa-fw"
+							aria-hidden="true"></i><span class="hide-menu">Công việc</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -151,5 +155,14 @@
 	<script src="<c:url value="/assets/js/dashboard1.js" />"></script>
 	<script
 		src="<c:url value="/assets/plugins/bower_components/toast-master/js/jquery.toast.js" />"></script>
+	<!-- 
+	<script src="<c:url value="/assets/js/jquery.dataTables.js" />"></script>
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		});
+	</script>
+	 -->
+	
 </body>
 </html>

@@ -1,14 +1,22 @@
 package com.vtanh1905.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
-public class Jobs {
+public class Job {
 	private int id;
 	private String name;
 	private Timestamp start_date;
 	private Timestamp end_date;
+		
+	public Job(String name, Timestamp start_date, Timestamp end_date) {
+		super();
+		this.name = name;
+		this.start_date = start_date;
+		this.end_date = end_date;
+	}
 	
-	public Jobs(int id, String name, Timestamp start_date, Timestamp end_date) {
+	public Job(int id, String name, Timestamp start_date, Timestamp end_date) {
 		super();
 		this.id = id;
 		this.name = name;

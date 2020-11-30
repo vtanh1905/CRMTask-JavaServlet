@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 
-//@WebFilter(filterName = "setCharactorEncodingFilter", urlPatterns = {"/*"})
+@WebFilter(filterName = "setCharactorEncodingFilter", urlPatterns = {"/*"})
 public class SetCharacterEncodingFilter implements Filter {
 
 	@Override
