@@ -31,6 +31,26 @@ public class UserRepository {
 
 		return users;
 	}
+	
+	public List<User> findAllByRoleId(int roleId) {
+		List<User> users = new ArrayList<User>();
+		final String QUERY = "SELECT * FROM users where role_id =  ?";
+
+		try {
+			Connection connection = JDBCConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			preparedStatement.setInt(1, roleId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				users.add(new User(resultSet.getInt("id"), resultSet.getString("email"),
+						resultSet.getString("password"), resultSet.getString("fullname"), resultSet.getString("avatar"),
+						resultSet.getInt("role_id")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
 
 	public List<UserRoleDto> findAllWithRole() {
 		List<UserRoleDto> users = new ArrayList<UserRoleDto>();

@@ -27,6 +27,11 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
+
+	public List<User> findAllByRole(int roleId) {
+		return userRepository.findAllByRoleId(roleId);
+	}
+	
 	public List<UserRoleDto> findAllWithRole() {
 		return userRepository.findAllWithRole();
 	}

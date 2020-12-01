@@ -114,7 +114,7 @@
 					<li><a href="<%=CONTEXT_PATH + PathConfig.JOB%>"
 						class="waves-effect"><i class="fa fa-table fa-fw"
 							aria-hidden="true"></i><span class="hide-menu">Dự án</span></a></li>
-					<li><a href="<%=CONTEXT_PATH + PathConfig.ROLE%>"
+					<li><a href="<%=CONTEXT_PATH + PathConfig.TASK%>"
 						class="waves-effect"><i class="fa fa-table fa-fw"
 							aria-hidden="true"></i><span class="hide-menu">Công việc</span></a></li>
 				</ul>

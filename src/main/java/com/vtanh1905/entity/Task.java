@@ -8,17 +8,27 @@ public class Task {
 	private Timestamp start_date;
 	private Timestamp end_date;
 	private int user_id;
-	private int job_d;
+	private int job_id;
 	private int status_id;
 	
-	public Task(int id, String name, Timestamp start_date, Timestamp end_date, int user_id, int job_d, int status_id) {
+	public Task(String name, Timestamp start_date, Timestamp end_date, int user_id, int job_id, int status_id) {
+		super();
+		this.name = name;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.user_id = user_id;
+		this.job_id = job_id;
+		this.status_id = status_id;
+	}
+	
+	public Task(int id, String name, Timestamp start_date, Timestamp end_date, int user_id, int job_id, int status_id) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.start_date = start_date;
 		this.end_date = end_date;
 		this.user_id = user_id;
-		this.job_d = job_d;
+		this.job_id = job_id;
 		this.status_id = status_id;
 	}
 
@@ -62,12 +72,12 @@ public class Task {
 		this.user_id = user_id;
 	}
 
-	public int getJob_d() {
-		return job_d;
+	public int getJob_id() {
+		return job_id;
 	}
 
-	public void setJob_d(int job_d) {
-		this.job_d = job_d;
+	public void setJob_id(int job_id) {
+		this.job_id = job_id;
 	}
 
 	public int getStatus_id() {

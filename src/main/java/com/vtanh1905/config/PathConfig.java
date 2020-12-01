@@ -28,4 +28,10 @@ public class PathConfig {
 	public static final String JOB_EDIT = "/job/edit";
 	public static final String JOB_REMOVE = "/job/remove";
 	
+	// Task Page
+	public static final String TASK = "/task";
+	public static final String TASK_ADD = "/task/add";
+	public static final String TASK_EDIT = "/task/edit";
+	public static final String TASK_REMOVE = "/task/remove";
+	
 }
