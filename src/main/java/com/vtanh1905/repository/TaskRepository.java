@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vtanh1905.dto.AmountOfTaskBelongStatus;
 import com.vtanh1905.dto.TaskDetailDto;
 import com.vtanh1905.entity.Task;
 import com.vtanh1905.service.TaskService;
@@ -130,5 +131,23 @@ public class TaskRepository {
 		}
 
 		return -1;
+	}
+	
+	public List<AmountOfTaskBelongStatus> findAmoutOfTaskBelongStatus(){
+		List<AmountOfTaskBelongStatus> tasks = new ArrayList<AmountOfTaskBelongStatus>();
+		final String QUERY = "SELECT s.id as 'status_id', count(t.id) as 'amount' FROM status s left join tasks t on s.id = t.status_id  group by s.id";
+
+		try {
+			Connection connection = JDBCConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				tasks.add(new AmountOfTaskBelongStatus(resultSet.getInt("status_id"), resultSet.getInt("amount")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return tasks;
 	}
 }

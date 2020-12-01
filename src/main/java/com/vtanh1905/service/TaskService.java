@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vtanh1905.dto.AmountOfTaskBelongStatus;
 import com.vtanh1905.dto.TaskDetailDto;
 import com.vtanh1905.entity.Task;
 import com.vtanh1905.repository.TaskRepository;
@@ -50,5 +51,9 @@ public class TaskService {
 
 	public int delete(int taskId) {
 		return taskRepository.delete(taskId);
+	}
+	
+	public List<AmountOfTaskBelongStatus> findAmoutOfTaskBelongStatus(){
+		return taskRepository.findAmoutOfTaskBelongStatus();
 	}
 }

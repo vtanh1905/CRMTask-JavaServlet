@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.vtanh1905.dto.AmountOfTaskBelongStatus"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/commons/taglib.jsp" %>
@@ -8,6 +11,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<% 
+		List<AmountOfTaskBelongStatus> statistic = (ArrayList<AmountOfTaskBelongStatus>)request.getAttribute("statistic"); 
+		int amoutStatusNotStart = statistic.get(0).getAmount();
+		int amoutStatusDoing = statistic.get(1).getAmount();
+		int amoutStatusDone = statistic.get(2).getAmount();
+		int sumAmount = amoutStatusNotStart + amoutStatusDoing + amoutStatusDone;
+	%>
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<div class="row bg-title">
@@ -28,13 +38,13 @@
 							<h5 class="text-muted vb">CHƯA BẮT ĐẦU</h5>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6">
-							<h3 class="counter text-right m-t-15 text-danger">23</h3>
+							<h3 class="counter text-right m-t-15 text-danger"><%= amoutStatusNotStart %></h3>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="progress">
 								<div class="progress-bar progress-bar-danger" role="progressbar"
-									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-									style="width: 40%">
+									aria-valuenow="3" aria-valuemin="5" aria-valuemax="2"
+									style="width: <%= (amoutStatusNotStart * 100 ) / sumAmount %>%">
 									<span class="sr-only">40% Complete (success)</span>
 								</div>
 							</div>
@@ -52,13 +62,13 @@
 							<h5 class="text-muted vb">ĐANG THỰC HIỆN</h5>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6">
-							<h3 class="counter text-right m-t-15 text-megna">169</h3>
+							<h3 class="counter text-right m-t-15 text-megna"><%= amoutStatusDoing %></h3>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="progress">
 								<div class="progress-bar progress-bar-megna" role="progressbar"
 									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-									style="width: 40%">
+									style="width: <%= (amoutStatusDoing * 100 ) / sumAmount %>%">
 									<span class="sr-only">40% Complete (success)</span>
 								</div>
 							</div>
@@ -76,13 +86,14 @@
 							<h5 class="text-muted vb">ĐÃ HOÀN THÀNH</h5>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6">
-							<h3 class="counter text-right m-t-15 text-primary">157</h3>
+							<h3 class="counter text-right m-t-15 text-primary"><%= amoutStatusDone %></h3>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="progress">
 								<div class="progress-bar progress-bar-primary"
 									role="progressbar" aria-valuenow="40" aria-valuemin="0"
-									aria-valuemax="100" style="width: 40%">
+									aria-valuemax="100" 
+									style="width: <%= (amoutStatusDone * 100 ) / sumAmount %>%">
 									<span class="sr-only">40% Complete (success)</span>
 								</div>
 							</div>

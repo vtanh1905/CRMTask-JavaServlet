@@ -54,24 +54,26 @@ public class RoleController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		final String PATH = req.getServletPath();
 		int result;
+		Role role;
+		
 		switch (PATH) {
 		case PathConfig.ROLE_ADD:
-			Role roleSave = new Role(req.getParameter("name"), req.getParameter("description"));
-			result = roleService.save(roleSave);
+			role = new Role(req.getParameter("name"), req.getParameter("description"));
+			result = roleService.save(role);
 			if(result == -1) {
 				req.setAttribute("messageError", "Lỗi! Vui lòng kiểm tra lại.");
-				req.setAttribute("role", roleSave);
+				req.setAttribute("role", role);
 				req.getRequestDispatcher("/WEB-INF/views/role/add.jsp").forward(req, resp);
 				return;
 			}
 			resp.sendRedirect(req.getContextPath() + PathConfig.ROLE);
 			return;
 		case PathConfig.ROLE_EDIT:
-			Role roleEdit = new Role(Integer.parseInt(req.getParameter("id")), req.getParameter("name"), req.getParameter("description"));
-			result = roleService.update(roleEdit);
+			role = new Role(Integer.parseInt(req.getParameter("id")), req.getParameter("name"), req.getParameter("description"));
+			result = roleService.update(role);
 			if(result == -1) {
 				req.setAttribute("messageError", "Lỗi! Vui lòng kiểm tra lại.");
-				req.setAttribute("role", roleEdit);
+				req.setAttribute("role", role);
 				req.getRequestDispatcher("/WEB-INF/views/role/edit.jsp").forward(req, resp);
 				return;
 			}
