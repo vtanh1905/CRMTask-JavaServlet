@@ -53,7 +53,7 @@
 											<td><%= DateLibrary.convertTimestampToSimpleDate(job.getEnd_date()) %></td>
 											<td><a href="<%= CONTEXT_PATH + PathConfig.JOB_EDIT %>?id=<%= job.getId() %>" class="btn btn-sm btn-primary">Sửa</a> <a
 												href="<%= CONTEXT_PATH + PathConfig.JOB_REMOVE %>?id=<%= job.getId() %>" class="btn btn-sm btn-danger">Xóa</a> <a
-												href="groupwork-details.html" class="btn btn-sm btn-info">Xem</a>
+												href="<%= CONTEXT_PATH + PathConfig.JOB_DETAIL %>?id=<%= job.getId() %>" class="btn btn-sm btn-info">Xem</a>
 											</td>
 										</tr>
 								 <% } %>

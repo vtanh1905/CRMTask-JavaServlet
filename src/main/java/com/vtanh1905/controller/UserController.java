@@ -11,18 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.vtanh1905.config.PathConfig;
 import com.vtanh1905.entity.User;
 import com.vtanh1905.service.RoleService;
+import com.vtanh1905.service.TaskService;
 import com.vtanh1905.service.UserService;
 
 @WebServlet(name = "userController", urlPatterns = { PathConfig.USER, PathConfig.USER_ADD, PathConfig.USER_EDIT,
-		PathConfig.USER_REMOVE })
+		PathConfig.USER_REMOVE, PathConfig.USER_DETAIL })
 public class UserController extends HttpServlet {
 
 	private RoleService roleService;
 	private UserService userService;
+	private TaskService	taskService;
 
 	public UserController() {
 		roleService = new RoleService();
 		userService = new UserService();
+		taskService = new TaskService();
 	}
 
 	@Override
@@ -52,6 +55,10 @@ public class UserController extends HttpServlet {
 				return;
 			}
 			resp.sendRedirect(req.getContextPath() + PathConfig.USER);
+			return;
+		case PathConfig.USER_DETAIL:
+			req.setAttribute("tasksOfUser", taskService.getListTaskOfUser(Integer.parseInt(req.getParameter("id"))));
+			req.getRequestDispatcher("/WEB-INF/views/user/detail.jsp").forward(req, resp);
 			return;
 		}
 	}

@@ -7,7 +7,12 @@ public class User {
 	private String fullname;
 	private String avatar;
 	private int role_id;
-	
+		
+	public User() {
+		id = role_id = 0;
+		email = password = fullname = avatar = "";
+	}
+
 	public User(String email, String password, String fullname, String avatar, int role_id) {
 		super();
 		this.email = email;
@@ -26,6 +31,8 @@ public class User {
 		this.avatar = avatar;
 		this.role_id = role_id;
 	}
+
+
 
 	public int getId() {
 		return id;

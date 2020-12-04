@@ -46,7 +46,7 @@
 											<td>${ user.role_description }</td>
 											<td><a href="<%= CONTEXT_PATH + PathConfig.USER_EDIT %>?id=${ user.id }" class="btn btn-sm btn-primary">Sửa</a> <a
 												href="<%= CONTEXT_PATH + PathConfig.USER_REMOVE %>?id=${ user.id }" class="btn btn-sm btn-danger">Xóa</a> <a
-												href="user-details.html" class="btn btn-sm btn-info">Xem</a>
+												href="<%= CONTEXT_PATH + PathConfig.USER_DETAIL %>?id=${ user.id }" class="btn btn-sm btn-info">Xem</a>
 											</td>
 										</tr>
 									</c:forEach>
