@@ -1,6 +1,8 @@
+<%@page import="com.vtanh1905.config.PathConfig"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/commons/taglib.jsp"%>
+<%@ include file="/WEB-INF/views/commons/constants.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +13,16 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-
+	<% String messageError = (String)request.getAttribute("messageError"); %>
 	<div class="container">
 		<div class="row mt-5">
 			<div class="col-md-5 m-auto mt-5">
 				<h3 class="text-center">ĐĂNG NHẬP HỆ THỐNG</h3>
 				<div class="p-4 border mt-4">
-					<form action="/action_page.php">
+					<form action="<%= CONTEXT_PATH + PathConfig.LOGIN %>" method="POST">
+						<% if(messageError != null) { %>
+								<div class="alert alert-danger" role="alert">${ messageError }</div>
+							<% } %>
 						<div class="form-group">
 							<label>Email</label> <input type="email" class="form-control"
 								name="email">
