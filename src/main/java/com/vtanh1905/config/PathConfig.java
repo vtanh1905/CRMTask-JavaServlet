@@ -3,6 +3,11 @@ package com.vtanh1905.config;
 public class PathConfig {
 	// Login Page
 	public static final String LOGIN = "/login";
+	public static final String LOGOUT = "/logout";
+	
+	// Profile
+	public static final String PROFILE = "/profile";
+	public static final String PROFILE_EDIT = "/profile/edit";
 	
 	//Error Page
 	public static final String ERROR = "/error";

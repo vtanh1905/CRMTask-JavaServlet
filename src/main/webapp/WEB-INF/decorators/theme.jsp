@@ -65,15 +65,6 @@
 					</span>
 					</a>
 				</div>
-				<ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
-					<li>
-						<form role="search" class="app-search hidden-xs">
-							<input type="text" placeholder="Search..." class="form-control">
-							<a href=""> <i class="fa fa-search"></i>
-							</a>
-						</form>
-					</li>
-				</ul>
 				<ul class="nav navbar-top-links navbar-right pull-right">
 					<li>
 						<div class="dropdown">
@@ -84,10 +75,13 @@
 								class="hidden-xs">Cybersoft</b>
 							</a>
 							<ul class="dropdown-menu">
+								<!-- 
 								<li><a href="profile.html">Thông tin cá nhân</a></li>
 								<li><a href="#">Thống kê công việc</a></li>
 								<li class="divider"></li>
-								<li><a href="#">Đăng xuất</a></li>
+								 -->
+								<li><a href="<%=CONTEXT_PATH + PathConfig.LOGOUT%>">Đăng
+										xuất</a></li>
 							</ul>
 						</div>
 					</li>
@@ -101,22 +95,56 @@
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-collapse slimscrollsidebar">
 				<ul class="nav" id="side-menu">
+					<%
+						if (USERLOGIN.getRole_id() == 1 || USERLOGIN.getRole_id() == 2) {
+					%>
 					<li style="padding: 10px 0 0;"><a
 						href="<%=CONTEXT_PATH + PathConfig.DASHBOARD%>"
 						class="waves-effect"><i class="fa fa-clock-o fa-fw"
 							aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
+					<%
+						}
+					%>
+
+					<%
+						if (USERLOGIN.getRole_id() == 1) {
+					%>
 					<li><a href="<%=CONTEXT_PATH + PathConfig.USER%>"
 						class="waves-effect"><i class="fa fa-user fa-fw"
 							aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a></li>
 					<li><a href="<%=CONTEXT_PATH + PathConfig.ROLE%>"
 						class="waves-effect"><i class="fa fa-modx fa-fw"
 							aria-hidden="true"></i><span class="hide-menu">Quyền</span></a></li>
+					<%
+						}
+					%>
+					
+					<%
+						if (USERLOGIN.getRole_id() != 3) {
+					%>
 					<li><a href="<%=CONTEXT_PATH + PathConfig.JOB%>"
 						class="waves-effect"><i class="fa fa-table fa-fw"
 							aria-hidden="true"></i><span class="hide-menu">Dự án</span></a></li>
 					<li><a href="<%=CONTEXT_PATH + PathConfig.TASK%>"
 						class="waves-effect"><i class="fa fa-table fa-fw"
 							aria-hidden="true"></i><span class="hide-menu">Công việc</span></a></li>
+					<%
+						}
+					%>
+					
+					<%
+						if (USERLOGIN.getRole_id() == 3) {
+					%>
+					<li><a href="<%=CONTEXT_PATH + PathConfig.PROFILE%>"
+						class="waves-effect"><i class="fa fa-user fa-fw"
+							aria-hidden="true"></i><span class="hide-menu">Cá Nhân</span></a></li>
+					<%
+						}
+					%>
+
+
+					
+					
 				</ul>
 			</div>
 		</div>
@@ -163,6 +191,6 @@
 		});
 	</script>
 	 -->
-	
+
 </body>
 </html>

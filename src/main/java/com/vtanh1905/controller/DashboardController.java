@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.vtanh1905.config.PathConfig;
+import com.vtanh1905.entity.User;
 import com.vtanh1905.service.TaskService;
 
 @WebServlet(name = "dahsboardController", urlPatterns = {PathConfig.DASHBOARD})
@@ -21,10 +22,8 @@ public class DashboardController extends HttpServlet {
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		req.setAttribute("statistic", taskService.findAmoutOfTaskBelongStatus());
-		
 		req.getRequestDispatcher("/WEB-INF/views/dashboard/index.jsp").forward(req, resp);
 	}
 }

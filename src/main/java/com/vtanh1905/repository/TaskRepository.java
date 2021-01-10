@@ -57,6 +57,30 @@ public class TaskRepository {
 
 		return tasks;
 	}
+	
+	public List<TaskDetailDto> findAllDetailByUserId(int userId) {
+		List<TaskDetailDto> tasks = new ArrayList<TaskDetailDto>();
+		final String QUERY = "SELECT t.*, u.fullname as 'user_fullname', j.name as 'job_name', j.start_date as 'job_start_date', j.end_date as 'job_end_date' , s.name as 'status_name' FROM tasks t, users u, jobs j, status s where t.user_id = u.id and t.job_id = j.id and t.status_id = s.id and t.user_id = ? ";
+
+		try {
+			Connection connection = JDBCConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			preparedStatement.setInt(1, userId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				tasks.add(new TaskDetailDto(resultSet.getInt("id"), resultSet.getString("name"),
+						resultSet.getTimestamp("start_date"), resultSet.getTimestamp("end_date"),
+						resultSet.getInt("user_id"), resultSet.getInt("job_id"), resultSet.getInt("status_id"),
+						resultSet.getString("user_fullname"), resultSet.getString("job_name"),
+						resultSet.getTimestamp("job_start_date"), resultSet.getTimestamp("job_end_date"),
+						resultSet.getString("status_name")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return tasks;
+	}
 
 	public Task findById(int taskId) {
 		final String QUERY = "SELECT * FROM tasks where id = ? ";
@@ -111,6 +135,23 @@ public class TaskRepository {
 			preparedStatement.setInt(5, task.getJob_id());
 			preparedStatement.setInt(6, task.getStatus_id());
 			preparedStatement.setInt(7, task.getId());
+			return preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return -1;
+	}
+	
+	public int updateStatus(int taskId, int userId, int statusId) {
+		final String QUERY = "UPDATE tasks SET status_id = ?  WHERE id = ? and user_id = ?";
+
+		try {
+			Connection connection = JDBCConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			preparedStatement.setInt(1, statusId);
+			preparedStatement.setInt(2, taskId);
+			preparedStatement.setInt(3, userId);
 			return preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -193,5 +234,30 @@ public class TaskRepository {
 		}
 
 		return tasks;
+	}
+		
+	public TaskDetailDto findAllDetailByIdAndUserId(int taskId, int userId) {
+		TaskDetailDto task = null;
+		final String QUERY = "SELECT t.*, u.fullname as 'user_fullname', j.name as 'job_name', j.start_date as 'job_start_date', j.end_date as 'job_end_date' , s.name as 'status_name' FROM tasks t, users u, jobs j, status s where t.user_id = u.id and t.job_id = j.id and t.status_id = s.id and t.user_id = ? and t.id = ? ";
+
+		try {
+			Connection connection = JDBCConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setInt(2, taskId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				task = new TaskDetailDto(resultSet.getInt("id"), resultSet.getString("name"),
+						resultSet.getTimestamp("start_date"), resultSet.getTimestamp("end_date"),
+						resultSet.getInt("user_id"), resultSet.getInt("job_id"), resultSet.getInt("status_id"),
+						resultSet.getString("user_fullname"), resultSet.getString("job_name"),
+						resultSet.getTimestamp("job_start_date"), resultSet.getTimestamp("job_end_date"),
+						resultSet.getString("status_name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return task;
 	}
 }
